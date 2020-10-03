@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace mvcmystudy02.Models
+namespace db
 {
     using System;
     using System.Collections.Generic;

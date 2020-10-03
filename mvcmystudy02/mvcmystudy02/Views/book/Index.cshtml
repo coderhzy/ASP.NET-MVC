@@ -1,12 +1,14 @@
 ﻿@model IEnumerable<db.Books>
 
 @{
-    ViewBag.Title = "bookList";
+    ViewBag.Title = "Index";
 }
 
-<h2>图书列表</h2>
+<h2>Index</h2>
 
-
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table>
     <tr>
         <th>
@@ -42,10 +44,12 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            <img src="@item.BookCoverUrl" style="height:100px"/>
+            @Html.DisplayFor(modelItem => item.BookCoverUrl)
         </td>
         <td>
-            @Html.ActionLink("购书", "order", new { id = item.BookId })
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
 }

@@ -1,0 +1,9 @@
+C:\mvc\mvc第二次实验\mvcmystudy02\dbLibrary\bin\Debug\dbLibrary.dll.config
+C:\mvc\mvc第二次实验\mvcmystudy02\dbLibrary\bin\Debug\dbLibrary.dll
+C:\mvc\mvc第二次实验\mvcmystudy02\dbLibrary\bin\Debug\dbLibrary.pdb
+C:\mvc\mvc第二次实验\mvcmystudy02\dbLibrary\bin\Debug\EntityFramework.dll
+C:\mvc\mvc第二次实验\mvcmystudy02\dbLibrary\bin\Debug\EntityFramework.xml
+C:\mvc\mvc第二次实验\mvcmystudy02\dbLibrary\bin\Debug\zh-Hans\EntityFramework.resources.dll
+C:\mvc\mvc第二次实验\mvcmystudy02\dbLibrary\obj\Debug\dbLibrary.csprojResolveAssemblyReference.cache
+C:\mvc\mvc第二次实验\mvcmystudy02\dbLibrary\obj\Debug\dbLibrary.dll
+C:\mvc\mvc第二次实验\mvcmystudy02\dbLibrary\obj\Debug\dbLibrary.pdb

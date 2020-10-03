@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using mvcmystudy02.Models;
 
 namespace mvcmystudy02.Controllers
 {
@@ -12,9 +11,7 @@ namespace mvcmystudy02.Controllers
         // 图书列表
         public ActionResult bookList()
         {
-            dbEntities dc = new dbEntities();
-            List<Books> list = (from a in dc.Books select a).ToList<Books>();
-
+           List<db.Books> list =  db.bll.books.getBooks();
             return View(list);
         }
 
@@ -22,8 +19,7 @@ namespace mvcmystudy02.Controllers
         [HttpGet]
         public ActionResult order(int id)
         {
-            dbEntities dc = new dbEntities();
-            Books entry = dc.Books.Single(a => a.BookId == id);
+            db.Books entry = db.bll.books.getEntry(id);
             return View(entry);
         }
 
@@ -32,13 +28,7 @@ namespace mvcmystudy02.Controllers
         public ActionResult order(int BookId, int? Num, string Address)
         {
             //数据新增的代码
-            dbEntities dc = new dbEntities();
-            Orders entry = new Orders();
-            entry.BookId = BookId;
-            entry.Num = Num;
-            entry.Address = Address;
-            dc.Orders.Add(entry);
-            dc.SaveChanges();
+            db.bll.orders.insert(BookId, Num, Address);
             return RedirectToAction("orderList");
         }
 
@@ -46,9 +36,7 @@ namespace mvcmystudy02.Controllers
 
         public ActionResult orderList()
         {
-            dbEntities dc = new dbEntities();
-            List<sv_Orders> list = (from a in dc.sv_Orders select a).ToList<sv_Orders>();
-
+            List<db.sv_Orders> list = db.bll.orders.getOrders();
             return View(list);
         }
 

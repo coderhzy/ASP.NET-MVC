@@ -40,3 +40,6 @@ C:\mvc\mvc第二次实验\mvcmystudy02\mvcmystudy02\bin\zh-Hans\System.Web.WebPa
 C:\mvc\mvc第二次实验\mvcmystudy02\mvcmystudy02\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
 C:\mvc\mvc第二次实验\mvcmystudy02\mvcmystudy02\obj\Debug\mvcmystudy02.dll
 C:\mvc\mvc第二次实验\mvcmystudy02\mvcmystudy02\obj\Debug\mvcmystudy02.pdb
+C:\mvc\mvc第二次实验\mvcmystudy02\mvcmystudy02\bin\dbLibrary.dll
+C:\mvc\mvc第二次实验\mvcmystudy02\mvcmystudy02\bin\dbLibrary.pdb
+C:\mvc\mvc第二次实验\mvcmystudy02\mvcmystudy02\obj\Debug\mvcmystudy02.csprojResolveAssemblyReference.cache

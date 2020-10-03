@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="mvcStudyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="mvcStudyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Books">
           <Key>
             <PropertyRef Name="BookId" />
@@ -51,15 +51,11 @@
 FROM [dbo].[sv_Orders] AS [sv_Orders]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="mvcStudyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="dbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Books" EntityType="mvcStudyModel.Books" />
-          <EntitySet Name="Orders" EntityType="mvcStudyModel.Orders" />
-          <EntitySet Name="sv_Orders" EntityType="mvcStudyModel.sv_Orders" />
-        </EntityContainer>
         <EntityType Name="Books">
           <Key>
             <PropertyRef Name="BookId" />
@@ -90,6 +86,11 @@ FROM [dbo].[sv_Orders] AS [sv_Orders]</DefiningQuery>
           <Property Name="Num" Type="Int32" />
           <Property Name="Address" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityContainer Name="dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Books" EntityType="Self.Books" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="sv_Orders" EntityType="Self.sv_Orders" />
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -99,33 +100,33 @@ FROM [dbo].[sv_Orders] AS [sv_Orders]</DefiningQuery>
           <EntitySetMapping Name="Books">
             <EntityTypeMapping TypeName="mvcStudyModel.Books">
               <MappingFragment StoreEntitySet="Books">
-                <ScalarProperty Name="BookCoverUrl" ColumnName="BookCoverUrl" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
                 <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="BookCoverUrl" ColumnName="BookCoverUrl" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="mvcStudyModel.Orders">
               <MappingFragment StoreEntitySet="Orders">
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="BookId" ColumnName="BookId" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sv_Orders">
             <EntityTypeMapping TypeName="mvcStudyModel.sv_Orders">
               <MappingFragment StoreEntitySet="sv_Orders">
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="BookCoverUrl" ColumnName="BookCoverUrl" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="BookCoverUrl" ColumnName="BookCoverUrl" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
