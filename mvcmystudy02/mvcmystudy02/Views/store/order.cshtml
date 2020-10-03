@@ -1,0 +1,56 @@
+﻿@model mvcmystudy02.Models.Books
+
+@{
+    ViewBag.Title = "order";
+}
+
+<h2>图书下单</h2>
+
+<fieldset>
+    <legend>图书信息</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BookId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BookId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AuthorName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AuthorName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BookCoverUrl)
+    </div>
+    <div class="display-field">
+       <img src="@Model.BookCoverUrl" style="height: 100px"
+    </div>
+</fieldset>
+
+<fieldset>
+  <legend>请输入下单信息</legend>
+  <form method="post">
+      <input type="hidden" name="BookId" value="@Model.BookId"/>
+      <div>数量: <input type="text" name="Num"></div>
+      <div>地址: <textarea name="Address"></textarea></div>
+      <input type="submit" value="提交"/>
+  </form>
+</fieldset>
