@@ -7,7 +7,8 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("新增方式一", "insertOne")
+    @Html.ActionLink("新增方式二", "insertTwo")
 </p>
 <table>
     <tr>
@@ -47,9 +48,11 @@
             @Html.DisplayFor(modelItem => item.BookCoverUrl)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("修改方式一", "UpdateOne", new {  id=item.BookId }) |
+            @Html.ActionLink("修改方式二", "UpdateTwo", new { id = item.BookId }) | 
+            @Html.ActionLink("修改方式三", "UpdateThree", new { id = item.BookId })
+            @Html.ActionLink("详情", "Details", new { id = item.BookId }) |
+            @Html.ActionLink("删除", "Delete", new { id = item.BookId })
         </td>
     </tr>
 }

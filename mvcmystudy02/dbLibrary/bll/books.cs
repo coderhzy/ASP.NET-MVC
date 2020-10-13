@@ -16,12 +16,75 @@ namespace db.bll
             return list;
         }
 
+        // 新增方法一
+        public static void insertOne(string AuthorName, string Title, Nullable<decimal> Price)
+        {
+            // 新增数据
+            db.dbEntities dc = new dbEntities();
+            db.Books entry = new Books();
+            entry.AuthorName = AuthorName;
+            entry.Title = Title;
+            entry.Price = Price;
+            dc.Books.Add(entry);
+            dc.SaveChanges();
+        }
+
+        // 新增方法二
+        public static void insertTwo(db.Books entry)
+        {
+            db.dbEntities dc = new dbEntities();
+            dc.Books.Add(entry);
+            dc.SaveChanges();
+
+        }
+
+       // 更新方法一
+        public static void updateOne(string AuthorName, string Title, Nullable<decimal> Price, int BookId)
+        {
+            db.dbEntities dc = new dbEntities();
+            db.Books entry = dc.Books.Single(a => a.BookId == BookId);
+            entry.AuthorName = AuthorName;
+            entry.Title = Title;
+            entry.Price = Price;
+            dc.SaveChanges();
+        }
+
+        // 更新方法二
+        public static void updateTwo(db.Books entry)
+        {
+            db.dbEntities dc = new dbEntities();
+            // 1. 将entry附加到entry 2. 附加之后，将他的状态改成修改状态
+            dc.Entry<db.Books>(entry).State
+                = System.Data.EntityState.Modified;
+            dc.SaveChanges();
+        }
+
+
+        // 更新方法三
+        public static void updateThree(db.Books entry)
+        {
+            db.dbEntities dc = new dbEntities();
+
+            db.lib.efHelp.entryUpdate(entry, dc);
+            dc.SaveChanges();
+        }
+
+        // 删除方法
+        public static void delete(int bookid)
+        {
+            db.dbEntities dc = new dbEntities();
+            db.Books entry = dc.Books.SingleOrDefault(a => a.BookId == bookid);
+            dc.Books.Remove(entry);
+            dc.SaveChanges();
+        }
+
         public static db.Books getEntry(int id)
         {
             dbEntities dc = new dbEntities();
             Books entry = dc.Books.Single(a => a.BookId == id);
             return entry;
         }
+
 
     }
 }

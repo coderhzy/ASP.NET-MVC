@@ -7,3 +7,12 @@ C:\mvc\mvc第二次实验\mvcmystudy02\dbLibrary\bin\Debug\zh-Hans\EntityFramewo
 C:\mvc\mvc第二次实验\mvcmystudy02\dbLibrary\obj\Debug\dbLibrary.csprojResolveAssemblyReference.cache
 C:\mvc\mvc第二次实验\mvcmystudy02\dbLibrary\obj\Debug\dbLibrary.dll
 C:\mvc\mvc第二次实验\mvcmystudy02\dbLibrary\obj\Debug\dbLibrary.pdb
+\\Mac\Home\Downloads\learn\学校\mvc\mvcmystudy02\dbLibrary\bin\Debug\dbLibrary.dll.config
+\\Mac\Home\Downloads\learn\学校\mvc\mvcmystudy02\dbLibrary\bin\Debug\dbLibrary.dll
+\\Mac\Home\Downloads\learn\学校\mvc\mvcmystudy02\dbLibrary\bin\Debug\dbLibrary.pdb
+\\Mac\Home\Downloads\learn\学校\mvc\mvcmystudy02\dbLibrary\bin\Debug\EntityFramework.dll
+\\Mac\Home\Downloads\learn\学校\mvc\mvcmystudy02\dbLibrary\bin\Debug\EntityFramework.xml
+\\Mac\Home\Downloads\learn\学校\mvc\mvcmystudy02\dbLibrary\bin\Debug\zh-Hans\EntityFramework.resources.dll
+\\Mac\Home\Downloads\learn\学校\mvc\mvcmystudy02\dbLibrary\obj\Debug\dbLibrary.csprojResolveAssemblyReference.cache
+\\Mac\Home\Downloads\learn\学校\mvc\mvcmystudy02\dbLibrary\obj\Debug\dbLibrary.dll
+\\Mac\Home\Downloads\learn\学校\mvc\mvcmystudy02\dbLibrary\obj\Debug\dbLibrary.pdb

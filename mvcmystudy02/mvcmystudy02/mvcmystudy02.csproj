@@ -225,6 +225,12 @@
     <Content Include="Views\store\orderList.cshtml" />
     <Content Include="Views\store\order.cshtml" />
     <Content Include="Views\book\Index.cshtml" />
+    <Content Include="Views\book\insertOne.cshtml" />
+    <Content Include="Views\book\insertTwo.cshtml" />
+    <Content Include="Views\book\updateOne.cshtml" />
+    <Content Include="Views\book\updateTwo.cshtml" />
+    <Content Include="Views\book\updateThree.cshtml" />
+    <Content Include="Views\book\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
