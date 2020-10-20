@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mvcmystudy02.Filter;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,10 +7,12 @@ using System.Web.Mvc;
 
 namespace mvcmystudy02.Controllers
 {
+
+    [myAuth]
     public class bookController : Controller
     {
-        // 图书列表
-
+        // 展示图书列表
+        [OutputCache(CacheProfile = "sqlCache")]
         public ActionResult Index()
         {
             List<db.Books> list = db.bll.books.getBooks();
@@ -115,6 +118,8 @@ namespace mvcmystudy02.Controllers
             return RedirectToAction("Index");
         }
 
+        // 具体信息在web.config文件内
+        [OutputCache(CacheProfile = "myCache")]
         public ActionResult Details(int id)
         {
             db.Books entry = db.bll.books.getEntry(id);

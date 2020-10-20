@@ -129,7 +129,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\bookController.cs" />
+    <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Controllers\storeController.cs" />
+    <Compile Include="Filter\myActionAttribute.cs" />
+    <Compile Include="Filter\myAuthAttribute.cs" />
+    <Compile Include="Filter\myErrorAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -231,6 +235,8 @@
     <Content Include="Views\book\updateTwo.cshtml" />
     <Content Include="Views\book\updateThree.cshtml" />
     <Content Include="Views\book\Details.cshtml" />
+    <Content Include="Views\login\Index.cshtml" />
+    <Content Include="Views\login\error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

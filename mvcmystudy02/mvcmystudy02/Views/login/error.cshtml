@@ -1,0 +1,6 @@
+﻿@{
+    ViewBag.Title = "error";
+}
+
+<h2>系统出错了，有问题请联系管理员</h2>
+<div>@HttpContext.Current.Session["errorMsg"]</div>
