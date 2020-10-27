@@ -14,7 +14,7 @@ namespace mvcmystudy02.Controllers
         public ActionResult Index()
         {
             // 异常处理过滤器返回友好界面给客户
-            //int a = 2,b=0,c;
+            //int a = 2, b = 0, c;
             //c = a / b;
 
             return View();
