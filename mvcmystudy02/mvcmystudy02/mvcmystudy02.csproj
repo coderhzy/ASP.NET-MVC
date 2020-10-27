@@ -128,6 +128,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ActionResultController.cs" />
     <Compile Include="Controllers\bookController.cs" />
     <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Controllers\storeController.cs" />
@@ -214,6 +215,7 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="test.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -237,6 +239,10 @@
     <Content Include="Views\book\Details.cshtml" />
     <Content Include="Views\login\Index.cshtml" />
     <Content Include="Views\login\error.cshtml" />
+    <Content Include="Views\ActionResult\Index.cshtml" />
+    <Content Include="Views\ActionResult\Index2.cshtml" />
+    <Content Include="Views\ActionResult\BookList1.cshtml" />
+    <Content Include="Views\ActionResult\BookList2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

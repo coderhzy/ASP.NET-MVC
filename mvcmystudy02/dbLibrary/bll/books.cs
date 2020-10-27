@@ -16,6 +16,22 @@ namespace db.bll
             return list;
         }
 
+        public static List<db.Books> getBooks1()
+        {
+            dbEntities dc = new dbEntities();
+            List<Books> list = dc.Books.Where(a=>a.Price<20).ToList<Books>();
+            return list;
+        }
+
+
+        public static List<db.Books> getBooks2()
+        {
+            dbEntities dc = new dbEntities();
+            List<Books> list = dc.Books.Where(a=>a.Price>=20).ToList<Books>();
+            return list;
+        }
+
+
         // 新增方法一
         public static void insertOne(string AuthorName, string Title, Nullable<decimal> Price)
         {

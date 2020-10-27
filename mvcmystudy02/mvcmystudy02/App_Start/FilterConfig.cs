@@ -11,8 +11,8 @@ namespace mvcmystudy02
             //filters.Add(new HandleErrorAttribute());
             filters.Add(new myErrorAttribute());
             // 全局过滤器
-            filters.Add(new myAuthAttribute());
-            filters.Add(new myActionAttribute());
+            //filters.Add(new myAuthAttribute());
+            //filters.Add(new myActionAttribute());
         }
     }
 }

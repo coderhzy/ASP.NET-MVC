@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>图书展示</h2>
+
+<fieldset>
+    <legend>20元以内的书</legend>
+    @*嵌入一个action执行结果*@
+    @Html.Action("BookList1")
+</fieldset>
+
+<fieldset>
+    <legend>20元以外的书</legend>
+    @Html.Action("BookList2")
+</fieldset>
+
+<fieldset>
+    <legend>返回结果测试</legend>
+    <div>
+        <a href="/ActionResult/download">下达</a>
+    </div>
+</fieldset>

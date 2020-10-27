@@ -6,11 +6,15 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <link type="text/css" rel="stylesheet" href="/ActionResult/css?color=blue" />
+    <script type="text/javascript">
+        $.getScript("/ActionResult/js")
+    </script>
 </head>
 <body>
     @RenderBody()
 
-    @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 </body>
 </html>
