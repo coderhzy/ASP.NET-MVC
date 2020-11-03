@@ -77,10 +77,10 @@ namespace mvcmystudy02.Controllers
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
-        //
-        public JavaScriptResult js()
-        {
-            return JavaScript("alert('1233oqiwje')");
-        }
+        ////
+        //public JavaScriptResult js()
+        //{
+        //    return JavaScript("alert('1233oqiwje')");
+        //}
     }
 }

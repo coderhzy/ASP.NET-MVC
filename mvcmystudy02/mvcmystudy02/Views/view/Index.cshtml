@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>视图练习</h2>
+
+
+@using (Html.BeginForm("submit", "view"
+    , FormMethod.Post,
+    new { enctype = "multipart/form-data" }))
+{
+    <div>
+        @*扩展属性*@
+        用户名: @Html.TextBox("userName", "小强",
+        new
+        {
+            data_id = "1",
+            data_theme = "hello",
+            @class = "input"
+        })
+    </div>
+    <div>介绍:@Html.TextArea("intro")</div>
+    <div>
+        用户密码: @Html.Password("password")
+    </div>
+    <div>
+        性别:@Html.RadioButtonList("sex", db.bll.listHepler.getSex(), new { data_id = "one" })
+    </div>
+    <div>爱好：@Html.CheckBoxList("love", db.bll.listHepler.getHobby())</div>
+    <div>城市:@Html.DropDownList("city", db.bll.listHepler.getCity())</div>
+    <div>城市: @Html.ListBox("city1", db.bll.listHepler.getCity())</div>
+    <div>头像：<input type="file" name="img"/></div>
+    <input type="submit" value="提交"/>
+}

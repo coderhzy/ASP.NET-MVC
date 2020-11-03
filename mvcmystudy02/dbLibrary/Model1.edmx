@@ -4,7 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="mvcStudyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="mvcStudy1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNet_SqlCacheTablesForChangeNotification">
+          <Key>
+            <PropertyRef Name="tableName" />
+          </Key>
+          <Property Name="tableName" Type="nvarchar" MaxLength="450" Nullable="false" />
+          <Property Name="notificationCreated" Type="datetime" Nullable="false" />
+          <Property Name="changeId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Books">
           <Key>
             <PropertyRef Name="BookId" />
@@ -14,6 +22,8 @@
           <Property Name="Title" Type="nvarchar" MaxLength="160" />
           <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
           <Property Name="BookCoverUrl" Type="nvarchar" MaxLength="1024" />
+          <Property Name="BookType" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookTag" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -25,29 +35,28 @@
           <Property Name="Num" Type="int" />
         </EntityType>
         <!--生成过程中发现错误:
-警告 6002: 表/视图“mvcStudy.dbo.sv_Orders”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+警告 6002: 表/视图“mvcStudy1.dbo.sv_Orders”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="sv_Orders">
           <Key>
             <PropertyRef Name="OrderID" />
           </Key>
-          <Property Name="Title" Type="nvarchar" MaxLength="160" />
-          <Property Name="BookCoverUrl" Type="nvarchar" MaxLength="1024" />
           <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
-          <Property Name="OrderID" Type="int" Nullable="false" />
-          <Property Name="Num" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="160" />
           <Property Name="Address" Type="nvarchar" MaxLength="1024" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="BookCoverUrl" Type="nvarchar" MaxLength="1024" />
         </EntityType>
-        <EntityContainer Name="mvcStudyModelStoreContainer">
+        <EntityContainer Name="mvcStudy1ModelStoreContainer">
+          <EntitySet Name="AspNet_SqlCacheTablesForChangeNotification" EntityType="Self.AspNet_SqlCacheTablesForChangeNotification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sv_Orders" EntityType="Self.sv_Orders" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-[sv_Orders].[Title] AS [Title], 
-[sv_Orders].[BookCoverUrl] AS [BookCoverUrl], 
 [sv_Orders].[Price] AS [Price], 
+[sv_Orders].[Title] AS [Title], 
+[sv_Orders].[Address] AS [Address], 
 [sv_Orders].[OrderID] AS [OrderID], 
-[sv_Orders].[Num] AS [Num], 
-[sv_Orders].[Address] AS [Address]
+[sv_Orders].[BookCoverUrl] AS [BookCoverUrl]
 FROM [dbo].[sv_Orders] AS [sv_Orders]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
@@ -55,7 +64,15 @@ FROM [dbo].[sv_Orders] AS [sv_Orders]</DefiningQuery>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="mvcStudyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="mvcStudy1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNet_SqlCacheTablesForChangeNotification">
+          <Key>
+            <PropertyRef Name="tableName" />
+          </Key>
+          <Property Name="tableName" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="notificationCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="changeId" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityType Name="Books">
           <Key>
             <PropertyRef Name="BookId" />
@@ -65,6 +82,8 @@ FROM [dbo].[sv_Orders] AS [sv_Orders]</DefiningQuery>
           <Property Name="Title" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="BookCoverUrl" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="BookType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookTag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -79,14 +98,14 @@ FROM [dbo].[sv_Orders] AS [sv_Orders]</DefiningQuery>
           <Key>
             <PropertyRef Name="OrderID" />
           </Key>
-          <Property Name="Title" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
-          <Property Name="BookCoverUrl" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="OrderID" Type="Int32" Nullable="false" />
-          <Property Name="Num" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="BookCoverUrl" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNet_SqlCacheTablesForChangeNotification" EntityType="Self.AspNet_SqlCacheTablesForChangeNotification" />
           <EntitySet Name="Books" EntityType="Self.Books" />
           <EntitySet Name="Orders" EntityType="Self.Orders" />
           <EntitySet Name="sv_Orders" EntityType="Self.sv_Orders" />
@@ -96,20 +115,31 @@ FROM [dbo].[sv_Orders] AS [sv_Orders]</DefiningQuery>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="mvcStudyModelStoreContainer" CdmEntityContainer="dbEntities">
+        <EntityContainerMapping StorageEntityContainer="mvcStudy1ModelStoreContainer" CdmEntityContainer="dbEntities">
+          <EntitySetMapping Name="AspNet_SqlCacheTablesForChangeNotification">
+            <EntityTypeMapping TypeName="mvcStudy1Model.AspNet_SqlCacheTablesForChangeNotification">
+              <MappingFragment StoreEntitySet="AspNet_SqlCacheTablesForChangeNotification">
+                <ScalarProperty Name="tableName" ColumnName="tableName" />
+                <ScalarProperty Name="notificationCreated" ColumnName="notificationCreated" />
+                <ScalarProperty Name="changeId" ColumnName="changeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Books">
-            <EntityTypeMapping TypeName="mvcStudyModel.Books">
+            <EntityTypeMapping TypeName="mvcStudy1Model.Books">
               <MappingFragment StoreEntitySet="Books">
                 <ScalarProperty Name="BookId" ColumnName="BookId" />
                 <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="BookCoverUrl" ColumnName="BookCoverUrl" />
+                <ScalarProperty Name="BookType" ColumnName="BookType" />
+                <ScalarProperty Name="BookTag" ColumnName="BookTag" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="mvcStudyModel.Orders">
+            <EntityTypeMapping TypeName="mvcStudy1Model.Orders">
               <MappingFragment StoreEntitySet="Orders">
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
@@ -119,14 +149,13 @@ FROM [dbo].[sv_Orders] AS [sv_Orders]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sv_Orders">
-            <EntityTypeMapping TypeName="mvcStudyModel.sv_Orders">
+            <EntityTypeMapping TypeName="mvcStudy1Model.sv_Orders">
               <MappingFragment StoreEntitySet="sv_Orders">
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="BookCoverUrl" ColumnName="BookCoverUrl" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="BookCoverUrl" ColumnName="BookCoverUrl" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

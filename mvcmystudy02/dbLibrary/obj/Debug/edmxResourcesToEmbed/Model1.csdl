@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="mvcStudyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="mvcStudy1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AspNet_SqlCacheTablesForChangeNotification">
+    <Key>
+      <PropertyRef Name="tableName" />
+    </Key>
+    <Property Name="tableName" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="notificationCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="changeId" Type="Int32" Nullable="false" />
+  </EntityType>
   <EntityType Name="Books">
     <Key>
       <PropertyRef Name="BookId" />
@@ -9,6 +17,8 @@
     <Property Name="Title" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
     <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
     <Property Name="BookCoverUrl" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="BookType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookTag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Orders">
     <Key>
@@ -23,14 +33,14 @@
     <Key>
       <PropertyRef Name="OrderID" />
     </Key>
-    <Property Name="Title" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
-    <Property Name="BookCoverUrl" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
     <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
-    <Property Name="OrderID" Type="Int32" Nullable="false" />
-    <Property Name="Num" Type="Int32" />
+    <Property Name="Title" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
     <Property Name="Address" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="BookCoverUrl" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityContainer Name="dbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AspNet_SqlCacheTablesForChangeNotification" EntityType="Self.AspNet_SqlCacheTablesForChangeNotification" />
     <EntitySet Name="Books" EntityType="Self.Books" />
     <EntitySet Name="Orders" EntityType="Self.Orders" />
     <EntitySet Name="sv_Orders" EntityType="Self.sv_Orders" />

@@ -25,6 +25,7 @@ namespace db
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<AspNet_SqlCacheTablesForChangeNotification> AspNet_SqlCacheTablesForChangeNotification { get; set; }
         public DbSet<Books> Books { get; set; }
         public DbSet<Orders> Orders { get; set; }
         public DbSet<sv_Orders> sv_Orders { get; set; }

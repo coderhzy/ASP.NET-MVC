@@ -1,0 +1,88 @@
+﻿@model db.Books
+
+@{
+    ViewBag.Title = "bookUpdate";
+}
+
+<h2>bookUpdate</h2>
+
+@using (Html.BeginForm("bookUpdate","view",FormMethod.Post,new{enctype="multipart/form-data"})) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Books</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BookId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BookId)
+            @Html.ValidationMessageFor(model => model.BookId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AuthorName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AuthorName)
+            @Html.ValidationMessageFor(model => model.AuthorName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Price)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BookType)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.BookType,
+            db.bll.listHepler.getBookType())
+            @Html.ValidationMessageFor(model => model.BookType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BookTag)
+        </div>
+        <div class="editor-field">
+            @Html.CheckBoxListFor(model => model.BookTag, 
+            db.bll.listHepler.getBookTag())
+            @Html.ValidationMessageFor(model => model.BookTag)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BookCoverUrl)
+        </div>
+        <div class="editor-field">
+            <img src="@Model.BookCoverUrl" style="width:100px;height:100px;"/>
+            @*隐藏表单*@
+            @Html.HiddenFor(a => a.BookCoverUrl)
+            <input type="file" name="BookCoverUrl"/>
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

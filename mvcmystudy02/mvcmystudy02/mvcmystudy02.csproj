@@ -132,6 +132,7 @@
     <Compile Include="Controllers\bookController.cs" />
     <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Controllers\storeController.cs" />
+    <Compile Include="Controllers\viewController.cs" />
     <Compile Include="Filter\myActionAttribute.cs" />
     <Compile Include="Filter\myAuthAttribute.cs" />
     <Compile Include="Filter\myErrorAttribute.cs" />
@@ -243,10 +244,17 @@
     <Content Include="Views\ActionResult\Index2.cshtml" />
     <Content Include="Views\ActionResult\BookList1.cshtml" />
     <Content Include="Views\ActionResult\BookList2.cshtml" />
+    <Content Include="Views\view\Index.cshtml" />
+    <Content Include="Views\view\show.cshtml" />
+    <Content Include="Views\view\bookIndex.cshtml" />
+    <Content Include="Views\view\bookDetail.cshtml" />
+    <Content Include="Views\view\bookInsert.cshtml" />
+    <Content Include="Views\view\bookUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

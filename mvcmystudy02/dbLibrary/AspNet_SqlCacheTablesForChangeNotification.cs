@@ -12,12 +12,10 @@ namespace db
     using System;
     using System.Collections.Generic;
     
-    public partial class sv_Orders
+    public partial class AspNet_SqlCacheTablesForChangeNotification
     {
-        public Nullable<decimal> Price { get; set; }
-        public string Title { get; set; }
-        public string Address { get; set; }
-        public int OrderID { get; set; }
-        public string BookCoverUrl { get; set; }
+        public string tableName { get; set; }
+        public System.DateTime notificationCreated { get; set; }
+        public int changeId { get; set; }
     }
 }

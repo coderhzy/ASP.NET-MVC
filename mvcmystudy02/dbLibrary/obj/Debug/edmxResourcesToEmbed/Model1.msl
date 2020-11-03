@@ -1,19 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="mvcStudyModelStoreContainer" CdmEntityContainer="dbEntities">
+  <EntityContainerMapping StorageEntityContainer="mvcStudy1ModelStoreContainer" CdmEntityContainer="dbEntities">
+    <EntitySetMapping Name="AspNet_SqlCacheTablesForChangeNotification">
+      <EntityTypeMapping TypeName="mvcStudy1Model.AspNet_SqlCacheTablesForChangeNotification">
+        <MappingFragment StoreEntitySet="AspNet_SqlCacheTablesForChangeNotification">
+          <ScalarProperty Name="tableName" ColumnName="tableName" />
+          <ScalarProperty Name="notificationCreated" ColumnName="notificationCreated" />
+          <ScalarProperty Name="changeId" ColumnName="changeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Books">
-      <EntityTypeMapping TypeName="mvcStudyModel.Books">
+      <EntityTypeMapping TypeName="mvcStudy1Model.Books">
         <MappingFragment StoreEntitySet="Books">
           <ScalarProperty Name="BookId" ColumnName="BookId" />
           <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="BookCoverUrl" ColumnName="BookCoverUrl" />
+          <ScalarProperty Name="BookType" ColumnName="BookType" />
+          <ScalarProperty Name="BookTag" ColumnName="BookTag" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="mvcStudyModel.Orders">
+      <EntityTypeMapping TypeName="mvcStudy1Model.Orders">
         <MappingFragment StoreEntitySet="Orders">
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
           <ScalarProperty Name="Address" ColumnName="Address" />
@@ -23,14 +34,13 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sv_Orders">
-      <EntityTypeMapping TypeName="mvcStudyModel.sv_Orders">
+      <EntityTypeMapping TypeName="mvcStudy1Model.sv_Orders">
         <MappingFragment StoreEntitySet="sv_Orders">
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="BookCoverUrl" ColumnName="BookCoverUrl" />
           <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="BookCoverUrl" ColumnName="BookCoverUrl" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

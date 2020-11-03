@@ -1,0 +1,65 @@
+﻿@model db.Books
+
+@{
+    ViewBag.Title = "bookDetail";
+}
+
+<h2>bookDetail</h2>
+
+<fieldset>
+    <legend>Books</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BookId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BookId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AuthorName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AuthorName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BookType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BookType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BookTag)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BookTag)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BookCoverUrl)
+    </div>
+    <div class="display-field">
+        <img src="@Model.BookCoverUrl" style="width:100px;height:100px" />
+        @Html.DisplayFor(model => model.BookCoverUrl)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

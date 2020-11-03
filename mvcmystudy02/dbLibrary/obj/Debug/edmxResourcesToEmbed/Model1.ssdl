@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="mvcStudyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="mvcStudy1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNet_SqlCacheTablesForChangeNotification">
+    <Key>
+      <PropertyRef Name="tableName" />
+    </Key>
+    <Property Name="tableName" Type="nvarchar" MaxLength="450" Nullable="false" />
+    <Property Name="notificationCreated" Type="datetime" Nullable="false" />
+    <Property Name="changeId" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Books">
     <Key>
       <PropertyRef Name="BookId" />
@@ -9,6 +17,8 @@
     <Property Name="Title" Type="nvarchar" MaxLength="160" />
     <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
     <Property Name="BookCoverUrl" Type="nvarchar" MaxLength="1024" />
+    <Property Name="BookType" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookTag" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Orders">
     <Key>
@@ -20,29 +30,28 @@
     <Property Name="Num" Type="int" />
   </EntityType>
   <!--生成过程中发现错误:
-警告 6002: 表/视图“mvcStudy.dbo.sv_Orders”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+警告 6002: 表/视图“mvcStudy1.dbo.sv_Orders”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
   <EntityType Name="sv_Orders">
     <Key>
       <PropertyRef Name="OrderID" />
     </Key>
-    <Property Name="Title" Type="nvarchar" MaxLength="160" />
-    <Property Name="BookCoverUrl" Type="nvarchar" MaxLength="1024" />
     <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
-    <Property Name="OrderID" Type="int" Nullable="false" />
-    <Property Name="Num" Type="int" />
+    <Property Name="Title" Type="nvarchar" MaxLength="160" />
     <Property Name="Address" Type="nvarchar" MaxLength="1024" />
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="BookCoverUrl" Type="nvarchar" MaxLength="1024" />
   </EntityType>
-  <EntityContainer Name="mvcStudyModelStoreContainer">
+  <EntityContainer Name="mvcStudy1ModelStoreContainer">
+    <EntitySet Name="AspNet_SqlCacheTablesForChangeNotification" EntityType="Self.AspNet_SqlCacheTablesForChangeNotification" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sv_Orders" EntityType="Self.sv_Orders" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-[sv_Orders].[Title] AS [Title], 
-[sv_Orders].[BookCoverUrl] AS [BookCoverUrl], 
 [sv_Orders].[Price] AS [Price], 
+[sv_Orders].[Title] AS [Title], 
+[sv_Orders].[Address] AS [Address], 
 [sv_Orders].[OrderID] AS [OrderID], 
-[sv_Orders].[Num] AS [Num], 
-[sv_Orders].[Address] AS [Address]
+[sv_Orders].[BookCoverUrl] AS [BookCoverUrl]
 FROM [dbo].[sv_Orders] AS [sv_Orders]</DefiningQuery>
     </EntitySet>
   </EntityContainer>

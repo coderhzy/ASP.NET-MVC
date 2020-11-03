@@ -19,5 +19,7 @@ namespace db
         public string Title { get; set; }
         public Nullable<decimal> Price { get; set; }
         public string BookCoverUrl { get; set; }
+        public string BookType { get; set; }
+        public string BookTag { get; set; }
     }
 }
