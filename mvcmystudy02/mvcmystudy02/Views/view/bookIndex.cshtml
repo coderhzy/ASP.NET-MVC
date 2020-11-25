@@ -9,6 +9,9 @@
 <p>
     @Html.ActionLink("新增", "bookInsert")
 </p>
+
+@using (Html.BeginForm()) {
+
 <table>
     <tr>
         <th>
@@ -35,10 +38,12 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.BookId)
+            @Html.Hidden("detail.rowID", item.BookId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.AuthorName)
@@ -47,23 +52,26 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Price)
+            @Html.TextBox("detail.Price", item.Price, new { style = "width:50px" })
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.BookType)
+            <img src=" @Html.DisplayFor(modelItem => item.BookCoverUrl) "style=" width:150px" />
         </td>
         <td>
+            @Html.DropDownList("detail.booktype", db.bll.listHepler.getBookType(item.BookType), new { style = "width=80px" })
+        </td>
+        <td>
+            @Html.CheckBoxList("detail.booktag." + item.BookId, db.bll.listHepler.getBookTag(item.BookTag));
             @Html.DisplayFor(modelItem => item.BookTag)
         </td>
         <td>
-            <img src="@item.BookCoverUrl" style="height:100px;"/>
-            @Html.DisplayFor(modelItem => item.BookCoverUrl)
-        </td>
-        <td>
-            @Html.ActionLink("修改", "bookUpdate", new { id=item.BookId }) |
-            @Html.ActionLink("详情", "bookDetail", new { id=item.BookId }) |
+            @Html.ActionLink("修改", "bookUpdate", new { id = item.BookId }) |
+            @Html.ActionLink("详情", "bookDetail", new { id = item.BookId })
         </td>
     </tr>
 }
 
 </table>
+<input type="submit" value="批量保存" />
+}
+

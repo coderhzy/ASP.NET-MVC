@@ -11,11 +11,12 @@
     <script type="text/javascript">
         $.getScript("/ActionResult/js")
     </script>
+    @RenderSection("Header", required: false)
+
 </head>
 <body>
-    11111
+     
     @RenderBody()
-
-    @RenderSection("scripts", required: false)
+    @*@RenderSection("scripts", required: false)*@
 </body>
 </html>

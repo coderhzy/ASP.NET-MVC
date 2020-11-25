@@ -131,6 +131,7 @@
     <Compile Include="Controllers\ActionResultController.cs" />
     <Compile Include="Controllers\bookController.cs" />
     <Compile Include="Controllers\loginController.cs" />
+    <Compile Include="Controllers\RezorController.cs" />
     <Compile Include="Controllers\storeController.cs" />
     <Compile Include="Controllers\viewController.cs" />
     <Compile Include="Filter\myActionAttribute.cs" />
@@ -250,6 +251,9 @@
     <Content Include="Views\view\bookDetail.cshtml" />
     <Content Include="Views\view\bookInsert.cshtml" />
     <Content Include="Views\view\bookUpdate.cshtml" />
+    <Content Include="Views\Rezor\Index.cshtml" />
+    <Content Include="Views\Rezor\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

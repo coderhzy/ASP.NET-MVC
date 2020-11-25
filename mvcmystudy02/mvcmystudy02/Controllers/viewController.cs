@@ -57,12 +57,31 @@ namespace mvcmystudy02.Controllers
         }
 
         // 列表
+        [HttpGet]
         public ActionResult bookIndex()
         {
             List<db.Books> list = db.bll.books.getBooks();
             return View(list);
         }
 
+        [HttpPost]
+        public ActionResult bookIndex(string val, string oldtype)
+        {
+            string rowID = Request["detail.rowID"].ToString();
+            string price = Request["detail.Price"].ToString();
+            string booktype = Request["detail.booktype"].ToString();
+            List<string> rowIDList = rowID.Split(',').ToList<string>();
+            List<string> priceList = price.Split(',').ToList<string>();
+            List<string> booktypeList = booktype.Split(',').ToList<string>();
+            Dictionary<string, string> dicBookTag = new Dictionary<string, string>();
+            foreach (var item in rowIDList)
+            {
+                string bookTag = Request["detail.BookTag." + item].ToString();
+                dicBookTag.Add(item, bookTag);
+            }
+            db.bll.books.batchUpdatePrice(rowIDList, priceList, booktypeList, dicBookTag);
+            return RedirectToAction("bookindex");
+        }
         // 详情
         public ActionResult bookDetail(int id)
         {

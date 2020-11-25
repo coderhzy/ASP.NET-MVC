@@ -11,49 +11,80 @@ namespace db.bll
     {
         public static List<SelectListItem> getCity()
         {
-            // 城市下拉框
             List<SelectListItem> list = new List<SelectListItem>();
-            list.Add(new SelectListItem(){ Text="南京",Value="nj",Selected = true});
-            list.Add(new SelectListItem(){ Text="苏州",Value="sz"});
-            list.Add(new SelectListItem() { Text = "上海", Value = "sh"});
+            list.Add(new SelectListItem() { Text = "南京", Value = "nj" });
+            list.Add(new SelectListItem() { Text = "苏州", Value = "sz" });
+            list.Add(new SelectListItem() { Text = "泰州", Value = "tz" });
             return list;
         }
-
         public static List<SelectListItem> getSex()
         {
-            // 性别下拉框
             List<SelectListItem> list = new List<SelectListItem>();
-            list.Add(new SelectListItem() { Text = "男", Value = "F", Selected = true });
+            list.Add(new SelectListItem() { Text = "男", Value = "F" });
             list.Add(new SelectListItem() { Text = "女", Value = "M" });
+            list.Add(new SelectListItem() { Text = "保密", Value = "null" });
             return list;
         }
-
         public static List<SelectListItem> getHobby()
         {
-            // 爱好下拉框
             List<SelectListItem> list = new List<SelectListItem>();
-            list.Add(new SelectListItem() { Text = "读书", Value = "book", Selected = true });
-            list.Add(new SelectListItem() { Text = "音乐", Value = "Music" });
-            list.Add(new SelectListItem() { Text = "跑步", Value = "Play" });
+            list.Add(new SelectListItem() { Text = "读书", Value = "readBook" });
+            list.Add(new SelectListItem() { Text = "跑步", Value = "run" });
+            list.Add(new SelectListItem() { Text = "看电影", Value = "film" });
             return list;
         }
-
         public static List<SelectListItem> getBookType()
         {
             List<SelectListItem> list = new List<SelectListItem>();
-            list.Add(new SelectListItem() { Text = "计算机", Value = "计算机", Selected = true });
+            list.Add(new SelectListItem() { Text = "计算机", Value = "计算机" });
             list.Add(new SelectListItem() { Text = "外语", Value = "外语" });
             list.Add(new SelectListItem() { Text = "艺术", Value = "艺术" });
             return list;
         }
+        public static List<SelectListItem> getBookType(string oldValue)
+        {
+            oldValue = oldValue == null ? "" : oldValue;
+            List<string> selectedList = oldValue.Split(',').ToList<string>();
+            List<SelectListItem> list = new List<SelectListItem>();
+            list.Add(new SelectListItem() { Text = "计算机", Value = "计算机" });
+            list.Add(new SelectListItem() { Text = "外语", Value = "外语" });
+            list.Add(new SelectListItem() { Text = "艺术", Value = "艺术" });
 
+            foreach (var item in list)
+            {
+                if (selectedList.Contains(item.Value))
+                {
+                    item.Selected = true;
+                }
+            }
+            return list;
+        }
         public static List<SelectListItem> getBookTag()
         {
             List<SelectListItem> list = new List<SelectListItem>();
-            list.Add(new SelectListItem() { Text = "低折扣", Value = "低折扣", Selected = true });
+            list.Add(new SelectListItem() { Text = "低折扣", Value = "低折扣" });
             list.Add(new SelectListItem() { Text = "畅销书", Value = "畅销书" });
             list.Add(new SelectListItem() { Text = "促销书", Value = "促销书" });
             return list;
         }
+        public static List<SelectListItem> getBookTag(string oldValue)
+        {
+            oldValue = oldValue == null ? "" : oldValue;
+            List<string> selectedList = oldValue.Split(',').ToList<string>();
+            List<SelectListItem> list = new List<SelectListItem>();
+            list.Add(new SelectListItem() { Text = "低折扣", Value = "低折扣" });
+            list.Add(new SelectListItem() { Text = "畅销书", Value = "畅销书" });
+            list.Add(new SelectListItem() { Text = "促销书", Value = "促销书" });
+
+            foreach (var item in list)
+            {
+                if (selectedList.Contains(item.Value))
+                {
+                    item.Selected = true;
+                }
+            }
+            return list;
+        }
     }
 }
+

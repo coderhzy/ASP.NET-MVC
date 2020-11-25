@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    string mul = "*";
+    string dengyu = "=";
+    string space = " ";
+    string tea1 = "王老师";
+    string tea2 = "吕老师";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    @section Header{
+        <script type="text/javascript">alert("你好！")</script>
+    };
+}
+
+<h2>Index</h2>
+<div>
+    <ul>
+        @for (int i = 1; i <= 9; i++)
+        {
+            for (int j = 1; j <= i; j++)
+            {
+                int k = i * j;
+                @i;@mul;@j;@dengyu;@k;@space;
+                if (i == j)
+                {
+                        <br/>                       
+                }
+            }
+        }
+    </ul>
+    <p>有问题@@王志瑞,@@吕树红</p>
+    @("<b>")<b>三江学院</b>@("</b>")
+</div>
+

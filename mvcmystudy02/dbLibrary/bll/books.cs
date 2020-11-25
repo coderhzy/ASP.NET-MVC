@@ -102,5 +102,19 @@ namespace db.bll
         }
 
 
+        public static void batchUpdatePrice(List<string> rowIDList, List<string> priceList, List<string> booktypeList, Dictionary<string, string> dicBookTag)
+        {
+            dbEntities dc = new dbEntities();
+            for (int i = 0; i < rowIDList.Count; i++)
+            {
+                int rowID = Convert.ToInt32(rowIDList[i]);
+                db.Books entry = dc.Books.FirstOrDefault(b => b.BookId == rowID);
+                entry.Price = Convert.ToDecimal(priceList[i]);
+                entry.BookType = booktypeList[i];
+                entry.BookTag = dicBookTag[rowIDList[i]];
+            }
+            dc.SaveChanges();
+        }
+
     }
 }
