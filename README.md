@@ -4,3 +4,4 @@
 - [x] 完成login界面的添加各种过滤器-缓存-异常过滤器处理
 - [x] 完成控制器，引入css-下载文件-引入JavaScript 
 - [X] 完成视图修改，bookIndex - bookUpdate - bookUpdate
+- [X] 完成Razor视图\&数据批量处理
