@@ -76,8 +76,16 @@ namespace mvcmystudy02.Controllers
             Dictionary<string, string> dicBookTag = new Dictionary<string, string>();
             foreach (var item in rowIDList)
             {
-                string bookTag = Request["detail.BookTag." + item].ToString();
-                dicBookTag.Add(item, bookTag);
+                if (Request["detail.BookTag." + item] != null)
+                {
+                    string bookTag = Request["detail.BookTag." + item].ToString();
+                    dicBookTag.Add(item, bookTag);
+                }
+                else
+                {
+                    dicBookTag.Add(item, "");
+                }
+                    
             }
             db.bll.books.batchUpdatePrice(rowIDList, priceList, booktypeList, dicBookTag);
             return RedirectToAction("bookindex");
