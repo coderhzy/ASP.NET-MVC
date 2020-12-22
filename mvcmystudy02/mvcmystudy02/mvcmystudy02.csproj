@@ -133,6 +133,7 @@
     <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Controllers\RezorController.cs" />
     <Compile Include="Controllers\storeController.cs" />
+    <Compile Include="Controllers\userInfoController.cs" />
     <Compile Include="Controllers\viewController.cs" />
     <Compile Include="Filter\myActionAttribute.cs" />
     <Compile Include="Filter\myAuthAttribute.cs" />
@@ -254,6 +255,8 @@
     <Content Include="Views\Rezor\Index.cshtml" />
     <Content Include="Views\Rezor\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\userInfo\Index.cshtml" />
+    <Content Include="Views\userInfo\showInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

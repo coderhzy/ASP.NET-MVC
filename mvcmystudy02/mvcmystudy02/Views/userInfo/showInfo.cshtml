@@ -1,0 +1,13 @@
+﻿@model IEnumerable<db.userinfo>
+
+@{
+    ViewBag.Title = "showInfo";
+}
+
+<h2>showInfo</h2>
+
+<div>用户名:@TempData["userName"]</div>
+<div>年龄:@TempData["age"]</div>
+<div>邮箱:@TempData["email"]</div>
+<div>身份证:@TempData["id"]</div>
+<div>电话号码:@TempData["tel"]</div>

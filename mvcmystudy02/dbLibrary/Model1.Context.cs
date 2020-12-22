@@ -12,6 +12,9 @@ namespace db
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Objects;
+    using System.Data.Objects.DataClasses;
+    using System.Linq;
     
     public partial class dbEntities : DbContext
     {
@@ -29,5 +32,43 @@ namespace db
         public DbSet<Books> Books { get; set; }
         public DbSet<Orders> Orders { get; set; }
         public DbSet<sv_Orders> sv_Orders { get; set; }
+        public DbSet<userinfo> userinfo { get; set; }
+    
+        public virtual ObjectResult<AspNet_SqlCachePollingStoredProcedure_Result> AspNet_SqlCachePollingStoredProcedure()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AspNet_SqlCachePollingStoredProcedure_Result>("AspNet_SqlCachePollingStoredProcedure");
+        }
+    
+        public virtual ObjectResult<string> AspNet_SqlCacheQueryRegisteredTablesStoredProcedure()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("AspNet_SqlCacheQueryRegisteredTablesStoredProcedure");
+        }
+    
+        public virtual int AspNet_SqlCacheRegisterTableStoredProcedure(string tableName)
+        {
+            var tableNameParameter = tableName != null ?
+                new ObjectParameter("tableName", tableName) :
+                new ObjectParameter("tableName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AspNet_SqlCacheRegisterTableStoredProcedure", tableNameParameter);
+        }
+    
+        public virtual int AspNet_SqlCacheUnRegisterTableStoredProcedure(string tableName)
+        {
+            var tableNameParameter = tableName != null ?
+                new ObjectParameter("tableName", tableName) :
+                new ObjectParameter("tableName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AspNet_SqlCacheUnRegisterTableStoredProcedure", tableNameParameter);
+        }
+    
+        public virtual int AspNet_SqlCacheUpdateChangeIdStoredProcedure(string tableName)
+        {
+            var tableNameParameter = tableName != null ?
+                new ObjectParameter("tableName", tableName) :
+                new ObjectParameter("tableName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AspNet_SqlCacheUpdateChangeIdStoredProcedure", tableNameParameter);
+        }
     }
 }

@@ -44,5 +44,31 @@
     <EntitySet Name="Books" EntityType="Self.Books" />
     <EntitySet Name="Orders" EntityType="Self.Orders" />
     <EntitySet Name="sv_Orders" EntityType="Self.sv_Orders" />
+    <EntitySet Name="userinfo" EntityType="mvcStudy1Model.userinfo" />
+    <FunctionImport Name="AspNet_SqlCachePollingStoredProcedure" ReturnType="Collection(mvcStudy1Model.AspNet_SqlCachePollingStoredProcedure_Result)" />
+    <FunctionImport Name="AspNet_SqlCacheQueryRegisteredTablesStoredProcedure" ReturnType="Collection(String)" />
+    <FunctionImport Name="AspNet_SqlCacheRegisterTableStoredProcedure">
+      <Parameter Name="tableName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AspNet_SqlCacheUnRegisterTableStoredProcedure">
+      <Parameter Name="tableName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AspNet_SqlCacheUpdateChangeIdStoredProcedure">
+      <Parameter Name="tableName" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
+  <EntityType Name="userinfo">
+    <Key>
+      <PropertyRef Name="identId" />
+    </Key>
+    <Property Name="userName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="age" Type="Int32" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="identId" Type="Int32" Nullable="false" />
+    <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="AspNet_SqlCachePollingStoredProcedure_Result">
+    <Property Type="String" Name="tableName" Nullable="false" MaxLength="450" />
+    <Property Type="Int32" Name="changeId" Nullable="false" />
+  </ComplexType>
 </Schema>

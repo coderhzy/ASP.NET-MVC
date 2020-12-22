@@ -44,5 +44,28 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="userinfo">
+      <EntityTypeMapping TypeName="mvcStudy1Model.userinfo">
+        <MappingFragment StoreEntitySet="userinfo">
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="identId" ColumnName="identId" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AspNet_SqlCachePollingStoredProcedure" FunctionName="mvcStudy1Model.Store.AspNet_SqlCachePollingStoredProcedure">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="mvcStudy1Model.AspNet_SqlCachePollingStoredProcedure_Result">
+          <ScalarProperty Name="tableName" ColumnName="tableName" />
+          <ScalarProperty Name="changeId" ColumnName="changeId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AspNet_SqlCacheQueryRegisteredTablesStoredProcedure" FunctionName="mvcStudy1Model.Store.AspNet_SqlCacheQueryRegisteredTablesStoredProcedure" />
+    <FunctionImportMapping FunctionImportName="AspNet_SqlCacheRegisterTableStoredProcedure" FunctionName="mvcStudy1Model.Store.AspNet_SqlCacheRegisterTableStoredProcedure" />
+    <FunctionImportMapping FunctionImportName="AspNet_SqlCacheUnRegisterTableStoredProcedure" FunctionName="mvcStudy1Model.Store.AspNet_SqlCacheUnRegisterTableStoredProcedure" />
+    <FunctionImportMapping FunctionImportName="AspNet_SqlCacheUpdateChangeIdStoredProcedure" FunctionName="mvcStudy1Model.Store.AspNet_SqlCacheUpdateChangeIdStoredProcedure" />
   </EntityContainerMapping>
 </Mapping>

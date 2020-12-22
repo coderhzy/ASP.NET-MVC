@@ -30,6 +30,18 @@
     <Property Name="Num" Type="int" />
   </EntityType>
   <!--生成过程中发现错误:
+警告 6002: 表/视图“mvcStudy1.dbo.userinfo”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="userinfo">
+    <Key>
+      <PropertyRef Name="identId" />
+    </Key>
+    <Property Name="userName" Type="nchar" MaxLength="10" />
+    <Property Name="age" Type="int" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="identId" Type="int" Nullable="false" />
+    <Property Name="tel" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--生成过程中发现错误:
 警告 6002: 表/视图“mvcStudy1.dbo.sv_Orders”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
   <EntityType Name="sv_Orders">
     <Key>
@@ -41,10 +53,30 @@
     <Property Name="OrderID" Type="int" Nullable="false" />
     <Property Name="BookCoverUrl" Type="nvarchar" MaxLength="1024" />
   </EntityType>
+  <Function Name="AspNet_SqlCachePollingStoredProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="AspNet_SqlCacheQueryRegisteredTablesStoredProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="AspNet_SqlCacheRegisterTableStoredProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tableName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AspNet_SqlCacheUnRegisterTableStoredProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tableName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AspNet_SqlCacheUpdateChangeIdStoredProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tableName" Type="nvarchar" Mode="In" />
+  </Function>
   <EntityContainer Name="mvcStudy1ModelStoreContainer">
     <EntitySet Name="AspNet_SqlCacheTablesForChangeNotification" EntityType="Self.AspNet_SqlCacheTablesForChangeNotification" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="userinfo" EntityType="Self.userinfo" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[userinfo].[userName] AS [userName], 
+[userinfo].[age] AS [age], 
+[userinfo].[email] AS [email], 
+[userinfo].[identId] AS [identId], 
+[userinfo].[tel] AS [tel]
+FROM [dbo].[userinfo] AS [userinfo]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="sv_Orders" EntityType="Self.sv_Orders" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [sv_Orders].[Price] AS [Price], 

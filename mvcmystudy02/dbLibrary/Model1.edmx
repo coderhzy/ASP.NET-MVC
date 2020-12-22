@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="mvcStudy1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="mvcStudy1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AspNet_SqlCacheTablesForChangeNotification">
           <Key>
             <PropertyRef Name="tableName" />
@@ -35,6 +35,18 @@
           <Property Name="Num" Type="int" />
         </EntityType>
         <!--生成过程中发现错误:
+警告 6002: 表/视图“mvcStudy1.dbo.userinfo”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="userinfo">
+          <Key>
+            <PropertyRef Name="identId" />
+          </Key>
+          <Property Name="userName" Type="nchar" MaxLength="10" />
+          <Property Name="age" Type="int" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="identId" Type="int" Nullable="false" />
+          <Property Name="tel" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--生成过程中发现错误:
 警告 6002: 表/视图“mvcStudy1.dbo.sv_Orders”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="sv_Orders">
           <Key>
@@ -46,10 +58,30 @@
           <Property Name="OrderID" Type="int" Nullable="false" />
           <Property Name="BookCoverUrl" Type="nvarchar" MaxLength="1024" />
         </EntityType>
+        <Function Name="AspNet_SqlCachePollingStoredProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="AspNet_SqlCacheQueryRegisteredTablesStoredProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="AspNet_SqlCacheRegisterTableStoredProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tableName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="AspNet_SqlCacheUnRegisterTableStoredProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tableName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="AspNet_SqlCacheUpdateChangeIdStoredProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tableName" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="mvcStudy1ModelStoreContainer">
           <EntitySet Name="AspNet_SqlCacheTablesForChangeNotification" EntityType="Self.AspNet_SqlCacheTablesForChangeNotification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userinfo" EntityType="Self.userinfo" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[userinfo].[userName] AS [userName], 
+[userinfo].[age] AS [age], 
+[userinfo].[email] AS [email], 
+[userinfo].[identId] AS [identId], 
+[userinfo].[tel] AS [tel]
+FROM [dbo].[userinfo] AS [userinfo]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="sv_Orders" EntityType="Self.sv_Orders" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [sv_Orders].[Price] AS [Price], 
@@ -60,8 +92,7 @@
 FROM [dbo].[sv_Orders] AS [sv_Orders]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="mvcStudy1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -109,7 +140,33 @@ FROM [dbo].[sv_Orders] AS [sv_Orders]</DefiningQuery>
           <EntitySet Name="Books" EntityType="Self.Books" />
           <EntitySet Name="Orders" EntityType="Self.Orders" />
           <EntitySet Name="sv_Orders" EntityType="Self.sv_Orders" />
+          <EntitySet Name="userinfo" EntityType="mvcStudy1Model.userinfo" />
+          <FunctionImport Name="AspNet_SqlCachePollingStoredProcedure" ReturnType="Collection(mvcStudy1Model.AspNet_SqlCachePollingStoredProcedure_Result)" />
+          <FunctionImport Name="AspNet_SqlCacheQueryRegisteredTablesStoredProcedure" ReturnType="Collection(String)" />
+          <FunctionImport Name="AspNet_SqlCacheRegisterTableStoredProcedure">
+            <Parameter Name="tableName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AspNet_SqlCacheUnRegisterTableStoredProcedure">
+            <Parameter Name="tableName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AspNet_SqlCacheUpdateChangeIdStoredProcedure">
+            <Parameter Name="tableName" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
+        <EntityType Name="userinfo">
+          <Key>
+            <PropertyRef Name="identId" />
+          </Key>
+          <Property Name="userName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="age" Type="Int32" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="identId" Type="Int32" Nullable="false" />
+          <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="AspNet_SqlCachePollingStoredProcedure_Result">
+          <Property Type="String" Name="tableName" Nullable="false" MaxLength="450" />
+          <Property Type="Int32" Name="changeId" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -159,6 +216,29 @@ FROM [dbo].[sv_Orders] AS [sv_Orders]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="userinfo">
+            <EntityTypeMapping TypeName="mvcStudy1Model.userinfo">
+              <MappingFragment StoreEntitySet="userinfo">
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="identId" ColumnName="identId" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AspNet_SqlCachePollingStoredProcedure" FunctionName="mvcStudy1Model.Store.AspNet_SqlCachePollingStoredProcedure">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="mvcStudy1Model.AspNet_SqlCachePollingStoredProcedure_Result">
+                <ScalarProperty Name="tableName" ColumnName="tableName" />
+                <ScalarProperty Name="changeId" ColumnName="changeId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AspNet_SqlCacheQueryRegisteredTablesStoredProcedure" FunctionName="mvcStudy1Model.Store.AspNet_SqlCacheQueryRegisteredTablesStoredProcedure" />
+          <FunctionImportMapping FunctionImportName="AspNet_SqlCacheRegisterTableStoredProcedure" FunctionName="mvcStudy1Model.Store.AspNet_SqlCacheRegisterTableStoredProcedure" />
+          <FunctionImportMapping FunctionImportName="AspNet_SqlCacheUnRegisterTableStoredProcedure" FunctionName="mvcStudy1Model.Store.AspNet_SqlCacheUnRegisterTableStoredProcedure" />
+          <FunctionImportMapping FunctionImportName="AspNet_SqlCacheUpdateChangeIdStoredProcedure" FunctionName="mvcStudy1Model.Store.AspNet_SqlCacheUpdateChangeIdStoredProcedure" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
